@@ -1,0 +1,21 @@
+<main class="w-full flex flex-col bg-[#eee] items-center">
+    <div class="w-full border-b-2 border-outline text-center text-white py-1 px-0 bg-header">
+        <h1 class="font-bold">TASK MANAGER</h1>
+    </div>
+    <div *ngFor="let task of tasks" class="flex my-5 p-5 rounded-lg shadow-lg w-1/2 justify-between">
+        <p class="text-xl">{{ task }}</p>
+        <div class="flex">
+            <a href="edit_customer.html?index=${index}">
+                <button>
+                    <span
+                        class="mr-2 py-1.5 px-2 text-center text-xl rounded-full hover:bg-[#2f80ed] hover:text-white"><i
+                            class="ri-pencil-line"></i></span>
+                </button>
+            </a>
+            <button>
+                <span class="mr-2 py-1.5 px-2 text-center text-xl rounded-full hover:bg-[#eb5757] hover:text-white"><i
+                        class="ri-delete-bin-line"></i></span>
+            </button>
+        </div>
+    </div>
+</main>
