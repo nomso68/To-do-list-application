@@ -6,6 +6,12 @@ module.exports = {
       fontSize: {
         '3.5xl': '3.5rem', // Adding custom size
       },
+      variants: {
+        extend: {
+          backgroundColor: ['hover'],
+          textColor: ['hover'],
+        }
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

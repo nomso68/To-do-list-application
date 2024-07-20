@@ -1,21 +1,38 @@
-<main class="w-full flex flex-col bg-[#eee] items-center">
-    <div class="w-full border-b-2 border-outline text-center text-white py-1 px-0 bg-header">
-        <h1 class="font-bold">TASK MANAGER</h1>
-    </div>
-    <div *ngFor="let task of tasks" class="flex my-5 p-5 rounded-lg shadow-lg w-1/2 justify-between">
-        <p class="text-xl">{{ task }}</p>
+<main class="w-full mb-4 bg-transparent flex flex-col px-1 items-center">
+    <header class="w-full border-b-2 border-outline text-center text-white py-1 px-0 bg-header">
+        <h1 class="font-bold">TO-DO LIST</h1>
+    </header>
+    <div *ngFor="let task of tasks"
+        class="flex flex-col sm:flex-row my-3 p-5 rounded-lg shadow-lg w-3/4 sm:w-1/2 justify-between bg-white">
+        <p *ngIf="!task.completed" class="text-xl">{{ task.task }}</p>
+        <p *ngIf="task.completed" class="text-xl line-through">{{ task.task }}</p>
         <div class="flex">
-            <a href="edit_customer.html?index=${index}">
-                <button>
-                    <span
-                        class="mr-2 py-1.5 px-2 text-center text-xl rounded-full hover:bg-[#2f80ed] hover:text-white"><i
-                            class="ri-pencil-line"></i></span>
-                </button>
-            </a>
-            <button>
+            <button *ngIf="!task.completed" (click)="markAsCompleted(task)">
+                <span class="mr-2 py-1.5 px-2 text-center text-xl rounded-full hover:bg-[#00a656] hover:text-white"><i
+                        class="ri-checkbox-line"></i></span>
+            </button>
+            <button *ngIf="!task.completed" (click)="openDialog(task)">
+                <span class="mr-2 py-1.5 px-2 text-center text-xl rounded-full hover:bg-[#2f80ed] hover:text-white"><i
+                        class="ri-pencil-line"></i></span>
+            </button>
+            <button (click)="deleteTask(task)">
                 <span class="mr-2 py-1.5 px-2 text-center text-xl rounded-full hover:bg-[#eb5757] hover:text-white"><i
                         class="ri-delete-bin-line"></i></span>
             </button>
         </div>
     </div>
+    <div class="flex text-center">
+        <button (click)="openDialog()"
+            class="hover:bg-header mt-5 mx-2 py-2 p-3 text-center text-header text-xl rounded-full hover:text-white cursor-pointer">
+            New
+            Task</button>
+
+        <button *ngIf="tasks.length" (click)="clearAll()"
+            class="hover:bg-[#eb5757] mt-5 mx-2 py-2 p-3 text-center text-header text-xl rounded-full hover:text-white cursor-pointer">
+            Clear All</button>
+    </div>
+    <button *ngIf="tasks.length && completedTasks" (click)="clearCompletedTasks()"
+        class="hover:bg-[#eb5757] mt-5 mx-2 py-2 p-3 text-center text-header text-xl rounded-full hover:text-white cursor-pointer">
+        Clear Completed
+    </button>
 </main>

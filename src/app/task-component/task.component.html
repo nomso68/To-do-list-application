@@ -1,0 +1,19 @@
+<main class="flex flex-col w-full items-center">
+    <header class="w-full text-center text-header py-1 px-0 ">
+        <h2>New Task</h2>
+    </header>
+    <section class="px-2 w-full text-center">
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="w-full space-x-2 my-2">
+            <div class="flex"><label class="text-[1.25rem]">Task:</label>
+                <input formControlName="task" class="w-full text-[1.25rem] mx-1 px-1 bg-[#ddd] active:border-none"
+                    type="text" required>
+            </div>
+            <button
+                class="hover:bg-outline mt-5 py-2 p-3 text-center text-header text-xl rounded-full hover:text-white">
+                Save</button>
+            <button (click)="cancel()"
+                class="hover:bg-[#eb5757] mt-5 py-2 p-3 text-center text-header text-xl rounded-full hover:text-white">
+                Cancel</button>
+        </form>
+    </section>
+</main>
