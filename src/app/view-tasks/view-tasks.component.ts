@@ -34,11 +34,11 @@ export class ViewTasksComponent implements OnInit {
     this.displayTasks();
   }
 
-  openDialog(taskName?: string) {
+  openDialog(task?: any) {
     var dialogRef = this.dialog.open(TaskComponent, {
       width: '50%',
       height: '175px',
-      data: taskName
+      data: task
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -12,7 +12,7 @@ export class TaskComponent implements OnInit {
   taskForm: FormGroup;
   constructor(
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: string,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<TaskComponent>) {
     this.taskForm = this.fb.group({
       task: [''],
@@ -23,7 +23,7 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
     if (this.data) {
       this.taskForm.patchValue({
-        task: this.data
+        task: this.data.task
       });
     }
   }
