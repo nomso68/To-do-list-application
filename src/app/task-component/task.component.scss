@@ -1,0 +1,12 @@
+.dialog-content {
+    width: 100%;
+    max-width: 600px; /* Set a max-width for larger screens */
+    padding: 1rem;
+  }
+  
+  @media (max-width: 600px) {
+    .dialog-content {
+      max-width: 90%; /* Adjust for smaller screens */
+    }
+  }
+  
