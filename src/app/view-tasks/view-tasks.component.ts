@@ -37,8 +37,9 @@ export class ViewTasksComponent implements OnInit {
 
   openDialog(task?: any) {
     var dialogRef = this.dialog.open(TaskComponent, {
-      width: '50%',
-      height: '175px',
+      width: '90%',
+      maxWidth: '600px',
+      height: 'auto',
       data: task
     });
 
