@@ -3,7 +3,7 @@
         <h2>New Task</h2>
     </header>
     <section class="px-2 w-full text-center">
-        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="w-full space-x-2 my-2">
+        <form [formGroup]="taskForm" (ngSubmit)="editMode ? edit() : onSubmit()" class="w-full space-x-2 my-2">
             <div class="flex"><label class="text-[1.25rem]">Task:</label>
                 <input formControlName="task" class="w-full text-[1.25rem] mx-1 px-1 bg-[#ddd] active:border-none"
                     type="text" required>

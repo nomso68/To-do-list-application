@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskComponent } from '../task-component/task.component';
-TaskComponent
 
 @Component({
   selector: 'app-view-tasks',
@@ -21,6 +20,8 @@ export class ViewTasksComponent implements OnInit {
     const data = localStorage.getItem('tasks');
     if (data) {
       this.tasks = JSON.parse(data);
+      console.log(this.tasks);
+
     }
     this.completedTasks = this.tasks.some(task => task.completed);
   }

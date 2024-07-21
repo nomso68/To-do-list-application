@@ -10,6 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class TaskComponent implements OnInit {
 
   taskForm: FormGroup;
+  editMode: boolean = false;
   constructor(
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,6 +26,9 @@ export class TaskComponent implements OnInit {
       this.taskForm.patchValue({
         task: this.data.task
       });
+      this.editMode = true;
+    } else {
+      this.editMode = false;
     }
   }
 
@@ -41,6 +45,19 @@ export class TaskComponent implements OnInit {
     else {
       localStorage.setItem('tasks', JSON.stringify([{ task: this.taskForm.value.task, completed: this.taskForm.value.completed }]));
     }
+    this.taskForm.reset();
+    this.dialogRef.close();
+  }
+
+  edit() {
+    if (!this.taskForm.valid) {
+      return;
+    }
+    const data: any = localStorage.getItem('tasks');
+    const tasks = JSON.parse(data);
+    const index = tasks.findIndex((task: any) => task.task === this.data.task);
+    tasks[index] = { task: this.taskForm.value.task, completed: this.taskForm.value.completed };
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     this.taskForm.reset();
     this.dialogRef.close();
   }
